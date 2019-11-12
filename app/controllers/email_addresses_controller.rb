@@ -60,6 +60,7 @@ class EmailAddressesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to email_addresses_url, notice: 'Email address was successfully destroyed.' }
       format.json { head :no_content }
+      redirect_to @email_address.person and return
     end
   end
 
