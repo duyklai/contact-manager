@@ -29,7 +29,7 @@ RSpec.describe PhoneNumbersController, type: :controller do
   # PhoneNumber. As you add validations to PhoneNumber, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    { number: 'MyString', person_id: 1}
+    { number: "MyString", person_id: 1 }
   }
 
   let(:invalid_attributes) {
@@ -74,6 +74,9 @@ RSpec.describe PhoneNumbersController, type: :controller do
 
   describe "POST #create" do
     context "with valid params" do
+      let(:alice) { Person.create(first_name: 'Alice', last_name: 'Smith') }
+      let(:valid_attributes) { {number: '555-8888', person_id: alice.id} }
+
       it "creates a new PhoneNumber" do
         expect {
           post :create, params: {phone_number: valid_attributes}, session: valid_session
@@ -82,7 +85,7 @@ RSpec.describe PhoneNumbersController, type: :controller do
 
       it "redirects to the created phone_number" do
         post :create, params: {phone_number: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(PhoneNumber.last)
+        expect(response).to redirect_to(alice)
       end
     end
 
@@ -97,7 +100,7 @@ RSpec.describe PhoneNumbersController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        { number: 'MyNewString', person_id: 2}
+        {number: 'MyNewString', person_id: 2}
       }
 
       it "updates the requested phone_number" do
