@@ -45,6 +45,7 @@ class EmailAddressesController < ApplicationController
       if @email_address.update(email_address_params)
         format.html { redirect_to @email_address, notice: 'Email address was successfully updated.' }
         format.json { render :show, status: :ok, location: @email_address }
+        redirect_to @email_address.person and return
       else
         format.html { render :edit }
         format.json { render json: @email_address.errors, status: :unprocessable_entity }
