@@ -1,24 +1,23 @@
-# README
+# Contact Manager: Rails Practice
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project was implemented by following the tutorial at [Jumpstartlab](http://tutorials.jumpstartlab.com/projects/contact_manager.html). Goal of project was to learn more about testing in Rails as well as getting more familiar with Rails in general.
 
-Things you may want to cover:
+## How to build
 
-* Ruby version
+This app was built with Ruby 2.6.5 and Rails 5.2.3. To build app locally:
 
-* System dependencies
+Clone the repository. Install the necessary gems:
 
-* Configuration
+`$ bundle install`
 
-* Database creation
+Migrate the database and setup:
 
-* Database initialization
+`$ rails db:migrate`
 
-* How to run the test suite
+`$ rails db:setup`
 
-* Services (job queues, cache servers, search engines, etc.)
+Then, you can start the server:
 
-* Deployment instructions
+`$ rails server`
 
-* ...
+connect to localhost:3000/people on your browser.
