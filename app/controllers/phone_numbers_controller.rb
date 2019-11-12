@@ -45,6 +45,7 @@ class PhoneNumbersController < ApplicationController
       if @phone_number.update(phone_number_params)
         format.html { redirect_to @phone_number, notice: 'Phone number was successfully updated.' }
         format.json { render :show, status: :ok, location: @phone_number }
+        redirect_to @phone_number.person and return
       else
         format.html { render :edit }
         format.json { render json: @phone_number.errors, status: :unprocessable_entity }
