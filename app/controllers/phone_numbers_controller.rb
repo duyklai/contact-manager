@@ -60,6 +60,7 @@ class PhoneNumbersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to phone_numbers_url, notice: 'Phone number was successfully destroyed.' }
       format.json { head :no_content }
+      redirect_to @phone_number.person and return
     end
   end
 
