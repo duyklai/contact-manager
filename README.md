@@ -2,7 +2,7 @@
 
 This project was implemented by following the tutorial at [Jumpstartlab](http://tutorials.jumpstartlab.com/projects/contact_manager.html). Goal of project was to learn more about testing in Rails as well as getting more familiar with Rails in general.
 
-The current demo does not have any "home" page. Append website/people or website/companies to the end of the demo link to access the respective pages.
+The current demo does not have any "home" page. Append _/people_ or _/companies_ to the end of the heroku link to access the respective pages.
 
 Current [People Demo](https://radiant-tundra-38215.herokuapp.com/people). Current [Company Demo](https://radiant-tundra-38215.herokuapp.com/companies)
 
