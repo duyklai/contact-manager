@@ -12,9 +12,16 @@ Clone the repository. Install the necessary gems:
 
 Migrate the database and setup:
 
+`$ cd bin`
+
 `$ rails db:migrate`
 
 `$ rails db:setup`
+
+Run the test suites to make sure everything is working as intended:
+(Make sure you cd out of the bin folder and back into root project folder)
+
+`$ bundle exec rspec`
 
 Then, you can start the server:
 
