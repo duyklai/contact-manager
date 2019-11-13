@@ -14,7 +14,7 @@ class EmailAddressesController < ApplicationController
 
   # GET /email_addresses/new
   def new
-    @email_address = EmailAddress.new(person_id: params[:person_id])
+    @email_address = EmailAddress.new(contact_id: params[:contact_id], contact_type: params[:contact_type])
   end
 
   # GET /email_addresses/1/edit
@@ -30,7 +30,7 @@ class EmailAddressesController < ApplicationController
       if @email_address.save
         format.html { redirect_to @email_address, notice: 'Email address was successfully created.' }
         format.json { render :show, status: :created, location: @email_address }
-        redirect_to @email_address.person and return
+        redirect_to @email_address.contact and return
       else
         format.html { render :new }
         format.json { render json: @email_address.errors, status: :unprocessable_entity }
@@ -45,7 +45,7 @@ class EmailAddressesController < ApplicationController
       if @email_address.update(email_address_params)
         format.html { redirect_to @email_address, notice: 'Email address was successfully updated.' }
         format.json { render :show, status: :ok, location: @email_address }
-        redirect_to @email_address.person and return
+        redirect_to @email_address.contact and return
       else
         format.html { render :edit }
         format.json { render json: @email_address.errors, status: :unprocessable_entity }
@@ -60,7 +60,7 @@ class EmailAddressesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to email_addresses_url, notice: 'Email address was successfully destroyed.' }
       format.json { head :no_content }
-      redirect_to @email_address.person and return
+      redirect_to @email_address.contact and return
     end
   end
 
@@ -72,6 +72,6 @@ class EmailAddressesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def email_address_params
-      params.require(:email_address).permit(:address, :person_id)
+      params.require(:email_address).permit(:address, :contact_id, :contact_type)
     end
 end
