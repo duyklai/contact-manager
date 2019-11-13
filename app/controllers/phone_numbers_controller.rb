@@ -14,7 +14,7 @@ class PhoneNumbersController < ApplicationController
 
   # GET /phone_numbers/new
   def new
-    @phone_number = PhoneNumber.new(person_id: params[:person_id])
+    @phone_number = PhoneNumber.new(contact_id: params[:contact_id], contact_type: params[:contact_type])
   end
 
   # GET /phone_numbers/1/edit
@@ -30,7 +30,7 @@ class PhoneNumbersController < ApplicationController
       if @phone_number.save
         format.html { redirect_to @phone_number, notice: 'Phone number was successfully created.' }
         format.json { render :show, status: :created, location: @phone_number }
-        redirect_to @phone_number.person and return
+        redirect_to @phone_number.contact and return
       else
         format.html { render :new }
         format.json { render json: @phone_number.errors, status: :unprocessable_entity }
@@ -45,7 +45,7 @@ class PhoneNumbersController < ApplicationController
       if @phone_number.update(phone_number_params)
         format.html { redirect_to @phone_number, notice: 'Phone number was successfully updated.' }
         format.json { render :show, status: :ok, location: @phone_number }
-        redirect_to @phone_number.person and return
+        redirect_to @phone_number.contact and return
       else
         format.html { render :edit }
         format.json { render json: @phone_number.errors, status: :unprocessable_entity }
@@ -60,7 +60,7 @@ class PhoneNumbersController < ApplicationController
     respond_to do |format|
       format.html { redirect_to phone_numbers_url, notice: 'Phone number was successfully destroyed.' }
       format.json { head :no_content }
-      redirect_to @phone_number.person and return
+      redirect_to @phone_number.contact and return
     end
   end
 
@@ -72,6 +72,6 @@ class PhoneNumbersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def phone_number_params
-      params.require(:phone_number).permit(:number, :person_id)
+      params.require(:phone_number).permit(:number, :contact_id, :contact_type)
     end
 end
